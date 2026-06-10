@@ -1,0 +1,31 @@
+// Multiplexor
+
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+    /*
+    Not(in = a, out = na);
+    Not(in = b, out = nb);
+    Not(in = sel, out = nsel);
+
+    And(a = a, b = b, out = ab);
+    And(a = na, b = b, out = nab);
+    And(a = a, b = nb, out = anb);
+
+    And(a = nab, b = sel, out = first);
+    And(a = anb, b = nsel, out = second);
+    And(a = ab, b = nsel, out = third);
+    And(a = ab, b = sel, out = fourth);
+
+    Or(a = first, b = second, out=final1);
+    Or(a = final1, b = third, out = final2);
+    Or(a = final2, b = fourth, out = out);
+    */
+
+    Not(in = sel, out = nsel);
+    And(a = nsel, b = a, out = asel);
+    And(a = sel, b = b, out = bsel);
+    Or(a = asel, b = bsel, out = out);
+}
